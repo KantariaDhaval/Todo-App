@@ -75,6 +75,11 @@ function addTodoItem(todo) {
 
     todoEl.addEventListener('click', (e) => {
         todoEl.classList.toggle('completed');
+        if(completedBtn.classList.contains('active')) {
+            updateTodoItemDisplay(true);
+        } else if(uncompletedBtn.classList.contains('active')) {
+            updateTodoItemDisplay(false);
+        }
     })
 
     // WHEN MOUSE ENTER TO LIST ITEM, SHOW DELETE BUTTON
