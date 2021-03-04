@@ -6,7 +6,15 @@ const allBtn = document.getElementById('allBtn');
 const completedBtn = document.getElementById('completedBtn');
 const uncompletedBtn = document.getElementById('uncompletedBtn');
 const total = document.getElementById('total');
+const previousTodoItems = JSON.parse(localStorage.getItem("todos"));
 let numberOfItems = 0;
+
+// ADD PREVIOUSLY STRORED ITEMS
+previousTodoItems.forEach(( item ) => {
+    //console.log(item);
+    addTodoItem(item.note, item.completed);
+})
+
 
 // TAKE A INPUT AND ADD IT TO THE LIST
 inputBtn.addEventListener('click', (e) => {
@@ -14,7 +22,7 @@ inputBtn.addEventListener('click', (e) => {
 
     const todo = input.value;
     if(todo) {
-        addTodoItem(todo);
+        addTodoItem(todo, false);
     }
 });
 
@@ -58,7 +66,7 @@ allBtn.addEventListener('click', (e) => {
 })
 
 //HELPER FUNCTION TO ADD ITEM INTO LIST
-function addTodoItem(todo) {
+function addTodoItem(todo, taskCompleted) {
 
     // CREATE HTML ELEMENTS TO ADD ITEM
     const todoEl = document.createElement('li');
@@ -70,6 +78,9 @@ function addTodoItem(todo) {
     todoButton.innerHTML = `<i class="fas fa-times-circle"></i>`;
     todoButton.classList.add('delete');
     todoButton.classList.add('hidden');
+    if(taskCompleted) {
+        todoEl.classList.toggle('completed');
+    }
 
     // APPEND HTML ELEMENTS TO LIST
     todoEl.appendChild(todoLabel);
@@ -90,6 +101,7 @@ function addTodoItem(todo) {
 
     todoEl.addEventListener('click', (e) => {
         todoEl.classList.toggle('completed');
+        updateLocalStorage();
 
         // IF WE ARE IN THE COMPLETED SECTION AND WE TOGGLE THE COMPLETED TASK THEN UPDATE THE LIST ITEMS
         if(completedBtn.classList.contains('active')) {
@@ -112,7 +124,12 @@ function addTodoItem(todo) {
         todoEl.remove();
         numberOfItems--;
         total.innerText = numberOfItems;
+        updateLocalStorage();
+
     })
+
+    updateLocalStorage();
+
     input.value = "";
 }
 
@@ -131,4 +148,19 @@ function updateTodoItemDisplay(isTaskCompleted) {
     });
 
     total.innerText = numberOfItems;
+}
+
+// UPDATE LOCAL STORAGE
+function updateLocalStorage() {
+    const todoItems = Array.from(document.getElementsByTagName('li'));
+    const todos = [];
+
+    todoItems.forEach(todoItem => {
+        todos.push({
+            note: todoItem.innerText,
+            completed: todoItem.classList.contains('completed')
+        });
+    });
+
+    localStorage.setItem("todos", JSON.stringify(todos));
 }

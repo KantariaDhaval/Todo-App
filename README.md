@@ -8,3 +8,5 @@ After complete your todo item, you can also checkmark that item. And when you ho
 There is also functionality of categorize items by completed items and uncompleted items.
 
 You can also see how many items are there currently in the list.
+
+Your items will be stored in local storage so if you will refresh the page your will still be there.
