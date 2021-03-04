@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+<body>
+    <h1>Todos</h1>
+    <form action="" id="form">
+        <div class="input-container">
+            <input type="text" id="inputText" class="input" placeholder="Enter your todo item" autocomplete="off">
+            <button id="inputBtn"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        
+        <ul class="todos" id="todos">
+            <!-- <li>
+                <label for="todo">this is todo item</label>
+                <button class="delete"><i class="fas fa-times-circle"></i></button>
+            </li> -->
+        </ul>
+
+        <div class="classifiers">
+            <button class="active" id="allBtn">All</button>
+            <button class="" id="completedBtn">Completed</button>
+            <button class="" id="uncompletedBtn">Uncompleted</button>
+        </div>
+    </form>
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
