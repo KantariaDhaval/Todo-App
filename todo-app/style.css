@@ -36,6 +36,10 @@ form .input {
     color: #b5b5b5;
 }
 
+form .input:focus {
+    outline: none;
+}
+
 .input-container {
     position: relative;
     width: 100%;
@@ -51,6 +55,10 @@ form .input {
     background-color: rgba(12, 189, 233, 0.5);
     color: white;
     cursor: pointer;
+}
+
+#inputBtn:focus {
+    outline: none;
 }
 
 .todos {
@@ -86,6 +94,10 @@ form .input {
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+.delete:focus {
+    outline: none;
 }
 
 .hidden {
@@ -125,6 +137,10 @@ form .input {
 .classifiers button.active {
     background-color: rgba(12, 189, 233, 0.5);
     color: white;
+}
+
+.classifiers button:focus {
+    outline: none;
 }
 
 .classifiers #numberOfItems {
