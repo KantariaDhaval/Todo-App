@@ -110,6 +110,8 @@ function addTodoItem(todo) {
 
     todoButton.addEventListener('click', () => {
         todoEl.remove();
+        numberOfItems--;
+        total.innerText = numberOfItems;
     })
     input.value = "";
 }
