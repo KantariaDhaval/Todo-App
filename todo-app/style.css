@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: 'PT Sans', sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-size: 5rem;
+    color: rgb(12, 189, 233);
+    opacity: 0.5;
+}
+
+form {
+    width: 30%;
+    max-width: 100%;
+    margin: auto;
+    box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5rem;
+}
+
+form .input {
+    width: 90%;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    /* border-bottom: 2px solid rgb(51, 51, 51); */
+}
+
+.input::placeholder {
+    color: #b5b5b5;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+#inputBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border: none;
+    background-color: rgba(12, 189, 233, 0.5);
+    color: white;
+    cursor: pointer;
+}
+
+.todos {
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todos li {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-top: 1px solid #e5e5e5;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    overflow: scroll;
+    position: relative;
+}
+
+.todos li label {
+    width: 90%;
+    overflow: scroll;
+    cursor: pointer;
+}
+
+.delete {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    color: red;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.todos li:nth-child(1) {
+    border-top: 2px solid rgb(51, 51, 51);
+}
+
+.todos .completed {
+    text-decoration: line-through;
+    background-color: #f5f5f5;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.todos .completed button{
+    color: rgb(255, 115, 115);
+}
+
+.classifiers {
+    margin: 0;
+    border-top: 2px solid rgb(51, 51, 51);
+}
+
+.classifiers button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.classifiers button:hover {
+    color: rgb(12, 189, 233);
+}
+
+.classifiers button.active {
+    background-color: rgba(12, 189, 233, 0.5);
+    color: white;
+}
+
