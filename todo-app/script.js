@@ -5,6 +5,8 @@ const inputBtn = document.getElementById('inputBtn');
 const allBtn = document.getElementById('allBtn');
 const completedBtn = document.getElementById('completedBtn');
 const uncompletedBtn = document.getElementById('uncompletedBtn');
+const total = document.getElementById('total');
+let numberOfItems = 0;
 
 // TAKE A INPUT AND ADD IT TO THE LIST
 inputBtn.addEventListener('click', (e) => {
@@ -41,12 +43,15 @@ uncompletedBtn.addEventListener('click', (e) => {
 //SHOW ALL ITEMS
 allBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    numberOfItems = 0;
 
     const todoItems = Array.from(document.getElementsByTagName('li'));
     todoItems.forEach(todoItem => {
         todoItem.style.display = 'block';
+        numberOfItems++;
     });
 
+    total.innerText = numberOfItems;
     allBtn.classList.add('active');
     uncompletedBtn.classList.remove('active');
     completedBtn.classList.remove('active');
@@ -70,11 +75,23 @@ function addTodoItem(todo) {
     todoEl.appendChild(todoLabel);
     todoEl.appendChild(todoButton);
     todos.appendChild(todoEl);
+    
+    // IF COMPLETED BUTTON IS ACTIVE, DO NOT SHOW THIS ITEM
+    if(completedBtn.classList.contains('active')) {
+        updateTodoItemDisplay(true);
+    }
+
+    if(uncompletedBtn.classList.contains('active') || allBtn.classList.contains('active')) {
+        numberOfItems++;
+        total.innerText = numberOfItems;
+    }
 
     // EVENT LISTENERS FOR THE LIST ITEM
 
     todoEl.addEventListener('click', (e) => {
         todoEl.classList.toggle('completed');
+
+        // IF WE ARE IN THE COMPLETED SECTION AND WE TOGGLE THE COMPLETED TASK THEN UPDATE THE LIST ITEMS
         if(completedBtn.classList.contains('active')) {
             updateTodoItemDisplay(true);
         } else if(uncompletedBtn.classList.contains('active')) {
@@ -100,13 +117,16 @@ function addTodoItem(todo) {
 // HELPER FUNCTION TO SHOW COMPLETED AND UNCOMPLETED ITEMS
 function updateTodoItemDisplay(isTaskCompleted) {
     const todoItems = Array.from(document.getElementsByTagName('li'));
-
+    numberOfItems = 0;
+    
     todoItems.forEach(todoItem => {
         if(todoItem.classList.contains('completed') === isTaskCompleted) {
             todoItem.style.display = 'block';
+            numberOfItems++;
         } else {
             todoItem.style.display = 'none';
         }
     });
 
+    total.innerText = numberOfItems;
 }
